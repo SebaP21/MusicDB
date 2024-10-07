@@ -1,7 +1,6 @@
 import { OFFER_CONTENT_DB } from "@/graphql/OfferQuery";
 import client from "../../../../../lib/apolloClient";
 import { OfferSectionQueryQuery } from "../../../../../lib/generated/graphql";
-import styles from "./offer-box.module.css";
 
 const OfferBox = async () => {
 	const { data } = await client.query<OfferSectionQueryQuery>({

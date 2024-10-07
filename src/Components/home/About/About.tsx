@@ -1,7 +1,7 @@
 import { ABOUT_CONTENT_DB } from "@/graphql/AboutQuery";
 import client from "../../../../lib/apolloClient";
 import { AboutSectionContentQuery } from "../../../../lib/generated/graphql";
-import styles from "./about.module.css";
+
 import Image from "next/image";
 
 const About = async () => {

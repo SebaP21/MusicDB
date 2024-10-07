@@ -2,7 +2,6 @@ import { PORTFOLIO_CONTENT_DB } from "@/graphql/PortfolioQuery";
 import client from "../../../../../lib/apolloClient";
 import { PortfolioSectionContentQuery } from "../../../../../lib/generated/graphql";
 
-import styles from "./portfolio-box.module.css";
 
 const PortfolioBox = async () => {
 	const { data } = await client.query<PortfolioSectionContentQuery>({
