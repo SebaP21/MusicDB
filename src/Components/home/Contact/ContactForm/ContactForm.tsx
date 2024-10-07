@@ -1,6 +1,6 @@
 "use client";
 
-import { error } from "console";
+
 import { useState } from "react";
 
 const ContactForm: React.FC = () => {
@@ -113,7 +113,7 @@ const ContactForm: React.FC = () => {
 			>
 				Wyślij
 			</button>
-			{status && <p className='text-white'>{status}</p>}
+			{status && <p className='text-white'>{status}</p> }
 		</form>
 	);
 };
