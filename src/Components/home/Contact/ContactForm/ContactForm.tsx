@@ -59,10 +59,11 @@ const ContactForm: React.FC = () => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className={styles.contactForm}
+			className="min-w-[100%] min-h-[30svh] flex flex-col gap-5 mt-10 text-black "
 		>
-			<div>
+			<div className="">
 				<input
+					className="w-full p-2"
 					type='text'
 					id='name'
 					name='name'
@@ -74,6 +75,7 @@ const ContactForm: React.FC = () => {
 			</div>
 			<div>
 				<input
+					className="w-full p-2"
 					type='email'
 					id='email'
 					name='email'
@@ -85,6 +87,7 @@ const ContactForm: React.FC = () => {
 			</div>
 			<div>
 				<input
+					className="w-full p-2"
 					type='tel'
 					id='phone'
 					name='phone'
@@ -95,6 +98,7 @@ const ContactForm: React.FC = () => {
 			</div>
 			<div>
 				<textarea
+					className="w-full min-h-[10svh] max-h-[10svh] p-2"
 					id='message'
 					name='message'
 					value={formData.message}
@@ -103,8 +107,10 @@ const ContactForm: React.FC = () => {
 					placeholder='Wiadomość'
 				/>
 			</div>
-			<button type='submit'>Wyślij</button>
-			{status && <p>{status}</p>}
+			<button 
+			className="w-full bg-orange-400 p-3 uppercase"
+			type='submit'>Wyślij</button>
+			{status && <p className="text-white">{status}</p>}
 		</form>
 	);
 };

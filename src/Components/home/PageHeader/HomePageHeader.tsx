@@ -14,30 +14,22 @@ const HomePageHeader = async () => {
 	const heroImage = data.pageBy?.mainPageHeader?.homeHeaderPicture?.node;
 
 	return (
-		<header className='w-full h-[100svh] flex justify-center items-center bg-black '>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-					width: "30%",
-					gap: "1.5em",
-				}}
+		<header className='w-full h-[100svh] flex flex-col justify-center  bg-black '>
+			<div className="order-2 flex flex-col justify-center items-center"
 			>
 				<Image
 					src={logo?.mediaItemUrl || ""}
 					alt={logo?.altText || ""}
-					width={300}
-					height={300}
+					width={150}
+					height={150}
 				/>
-				<h1 className='text-xl md:text-2xl lg:text-4xl text-center p-2'>
+				<h1 className='text-3xl text-center px-3 text-white uppercase '>
 					{pageTitle}
 				</h1>
-				<div className='w-[40%] h-[2px] bg-orange-400 mt-2'></div>
+				<div className='w-[40%] h-[2px] mt-7 bg-orange-400'></div>
 			</div>
 			<div
-				className='min-w-[70%] h-[100svh] bg-center bg-cover'
+				className='w-full h-[60svh] bg-center bg-cover order-1'
 				style={{
 					backgroundImage: heroImage?.mediaItemUrl
 						? `url(${heroImage.mediaItemUrl})`
