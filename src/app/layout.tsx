@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
-// import { Audiowide } from "next/font/google";
+
+import "@/styles/globals.css";
+import "@/styles/custom.css"
+
 import { Roboto_Slab } from "next/font/google";
 import NavMobile from "@/Components/Nav/NavMobile/NavMobile";
 import NavDesktop from "@/Components/Nav/NavDesktop/NavDesktop";
 import Footer from "@/Components/Footer/Footer";
-// import { Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
 	title: "Music DB",
@@ -31,10 +32,10 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={roboto.className}>
-				<NavMobile/>
-				<NavDesktop/>
+				<NavMobile />
+				<NavDesktop />
 				{children}
-				<Footer/>
+				<Footer />
 			</body>
 		</html>
 	);
