@@ -3,7 +3,8 @@ import OfferBox from "./OfferBox/OfferBox";
 const Offer = () => {
 	return (
 		<section
-			className='relative w-full min-h-[100svh] bg-cover bg-center flex justify-center items-center'
+			id="offer"
+			className='relative w-full min-h-[100svh] bg-cover bg-fixed bg-center flex justify-center items-center'
 			style={{
 				backgroundImage:
 					"url('https://admin-musicdb.online/wp-content/uploads/2024/09/DSC01029-scaled-1.jpg')",

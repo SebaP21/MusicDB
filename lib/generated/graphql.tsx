@@ -3096,7 +3096,7 @@ export type LinkToPreviewConnectionEdge = Edge & LinkConnectionEdge & OneToOneCo
 };
 
 /** The Logo type */
-export type Logo = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfLogo & {
+export type Logo = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfLogoBox & {
   __typename?: 'Logo';
   /**
    * The ancestors of the content node.
@@ -3157,8 +3157,8 @@ export type Logo = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
   link?: Maybe<Scalars['String']['output']>;
-  /** Fields of the Logo ACF Field Group */
-  logo?: Maybe<Logo>;
+  /** Fields of the LogoBox ACF Field Group */
+  logoBox?: Maybe<LogoBox>;
   /**
    * The id field matches the WP_Post-&gt;ID field.
    * @deprecated Deprecated in favor of the databaseId field
@@ -3242,6 +3242,33 @@ export type LogoEnqueuedStylesheetsArgs = {
 /** The Logo type */
 export type LogoTitleArgs = {
   format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** The &quot;LogoBox&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type LogoBox = AcfFieldGroup & AcfFieldGroupFields & LogoBox_Fields & {
+  __typename?: 'LogoBox';
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** logoNav */
+  logoNav?: Maybe<AcfMediaItemConnectionEdge>;
+  /** logo_footer */
+  logo_footer?: Maybe<AcfMediaItemConnectionEdge>;
+};
+
+/** Interface representing fields of the ACF &quot;LogoBox&quot; Field Group */
+export type LogoBox_Fields = {
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** logoNav */
+  logoNav?: Maybe<AcfMediaItemConnectionEdge>;
+  /** logo_footer */
+  logo_footer?: Maybe<AcfMediaItemConnectionEdge>;
 };
 
 /** Connection to Logo Nodes */
@@ -3348,19 +3375,6 @@ export type LogoToPreviewConnectionEdge = Edge & LogoConnectionEdge & OneToOneCo
   cursor?: Maybe<Scalars['String']['output']>;
   /** The node of the connection, without the edges */
   node: Logo;
-};
-
-/** Interface representing fields of the ACF &quot;Logo&quot; Field Group */
-export type Logo_Fields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;Logo&quot; Field Group */
-  logoNav?: Maybe<AcfMediaItemConnectionEdge>;
-  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;Logo&quot; Field Group */
-  logo_footer?: Maybe<AcfMediaItemConnectionEdge>;
 };
 
 /** The &quot;MainPageHeader&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
@@ -12352,10 +12366,10 @@ export type WithAcfContactSection = {
   contactSection?: Maybe<ContactSection>;
 };
 
-/** Provides access to fields of the &quot;Logo&quot; ACF Field Group via the &quot;logo&quot; field */
-export type WithAcfLogo = {
-  /** Fields of the Logo ACF Field Group */
-  logo?: Maybe<Logo>;
+/** Provides access to fields of the &quot;LogoBox&quot; ACF Field Group via the &quot;logoBox&quot; field */
+export type WithAcfLogoBox = {
+  /** Fields of the LogoBox ACF Field Group */
+  logoBox?: Maybe<LogoBox>;
 };
 
 /** Provides access to fields of the &quot;MainPageHeader&quot; ACF Field Group via the &quot;mainPageHeader&quot; field */
@@ -12415,6 +12429,11 @@ export type ContactSectionContentQueryVariables = Exact<{ [key: string]: never; 
 
 export type ContactSectionContentQuery = { __typename?: 'RootQuery', pageBy?: { __typename?: 'Page', contactSection?: { __typename?: 'ContactSection', eMailAdress?: string | null, phoneNumber?: string | null, contactBackgroundImage?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, title?: string | null, slug?: string | null } } | null } | null } | null };
 
+export type LogoContentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoContentQuery = { __typename?: 'RootQuery', allLogo?: { __typename?: 'RootQueryToLogoConnection', nodes: Array<{ __typename?: 'Logo', logoBox?: { __typename?: 'LogoBox', logoNav?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, slug?: string | null, title?: string | null } } | null, logo_footer?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, slug?: string | null, title?: string | null } } | null } | null }> } | null };
+
 export type HomePageHeaderContentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -12425,10 +12444,22 @@ export type NavLinksContentQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type NavLinksContentQuery = { __typename?: 'RootQuery', pages?: { __typename?: 'RootQueryToPageConnection', nodes: Array<{ __typename?: 'Page', title?: string | null, slug?: string | null }> } | null };
 
+export type OfferLinksContentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type OfferLinksContentQuery = { __typename?: 'RootQuery', allOferta?: { __typename?: 'RootQueryToOfertaConnection', nodes: Array<{ __typename?: 'Oferta', title?: string | null, slug?: string | null }> } | null };
+
+export type OfferPageDynamicContentQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type OfferPageDynamicContentQuery = { __typename?: 'RootQuery', ofertaBy?: { __typename?: 'Oferta', offerCardItem?: { __typename?: 'OfferCardItem', homeOfferHeader?: string | null, offerDescription?: string | null, offerHeaderTitle?: string | null, offerVideo?: string | null, offerHeaderPicture?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, slug?: string | null, title?: string | null } } | null, offerPicture?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, title?: string | null, slug?: string | null } } | null } | null } | null };
+
 export type OfferSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type OfferSectionQueryQuery = { __typename?: 'RootQuery', allOferta?: { __typename?: 'RootQueryToOfertaConnection', nodes: Array<{ __typename?: 'Oferta', offerCardItem?: { __typename?: 'OfferCardItem', homeOfferHeader?: string | null, offerDescription?: string | null, offerHeaderTitle?: string | null, offerVideo?: string | null, offerHeaderPicture?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, slug?: string | null, title?: string | null } } | null, offerPicture?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, title?: string | null, slug?: string | null } } | null } | null }> } | null };
+export type OfferSectionQueryQuery = { __typename?: 'RootQuery', allOferta?: { __typename?: 'RootQueryToOfertaConnection', nodes: Array<{ __typename?: 'Oferta', slug?: string | null, title?: string | null, offerCardItem?: { __typename?: 'OfferCardItem', homeOfferHeader?: string | null, offerDescription?: string | null, offerHeaderTitle?: string | null, offerVideo?: string | null, offerHeaderPicture?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, slug?: string | null, title?: string | null } } | null, offerPicture?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null, title?: string | null, slug?: string | null } } | null } | null }> } | null };
 
 export type OfferBackgroundVideoQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -12545,6 +12576,64 @@ export type ContactSectionContentQueryHookResult = ReturnType<typeof useContactS
 export type ContactSectionContentLazyQueryHookResult = ReturnType<typeof useContactSectionContentLazyQuery>;
 export type ContactSectionContentSuspenseQueryHookResult = ReturnType<typeof useContactSectionContentSuspenseQuery>;
 export type ContactSectionContentQueryResult = Apollo.QueryResult<ContactSectionContentQuery, ContactSectionContentQueryVariables>;
+export const LogoContentDocument = gql`
+    query LogoContent {
+  allLogo {
+    nodes {
+      logoBox {
+        logoNav {
+          node {
+            altText
+            mediaItemUrl
+            slug
+            title(format: RENDERED)
+          }
+        }
+        logo_footer {
+          node {
+            altText
+            mediaItemUrl
+            slug
+            title(format: RENDERED)
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useLogoContentQuery__
+ *
+ * To run a query within a React component, call `useLogoContentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLogoContentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLogoContentQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoContentQuery(baseOptions?: Apollo.QueryHookOptions<LogoContentQuery, LogoContentQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LogoContentQuery, LogoContentQueryVariables>(LogoContentDocument, options);
+      }
+export function useLogoContentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LogoContentQuery, LogoContentQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LogoContentQuery, LogoContentQueryVariables>(LogoContentDocument, options);
+        }
+export function useLogoContentSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<LogoContentQuery, LogoContentQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<LogoContentQuery, LogoContentQueryVariables>(LogoContentDocument, options);
+        }
+export type LogoContentQueryHookResult = ReturnType<typeof useLogoContentQuery>;
+export type LogoContentLazyQueryHookResult = ReturnType<typeof useLogoContentLazyQuery>;
+export type LogoContentSuspenseQueryHookResult = ReturnType<typeof useLogoContentSuspenseQuery>;
+export type LogoContentQueryResult = Apollo.QueryResult<LogoContentQuery, LogoContentQueryVariables>;
 export const HomePageHeaderContentDocument = gql`
     query HomePageHeaderContent {
   pageBy(pageId: 12) {
@@ -12644,6 +12733,109 @@ export type NavLinksContentQueryHookResult = ReturnType<typeof useNavLinksConten
 export type NavLinksContentLazyQueryHookResult = ReturnType<typeof useNavLinksContentLazyQuery>;
 export type NavLinksContentSuspenseQueryHookResult = ReturnType<typeof useNavLinksContentSuspenseQuery>;
 export type NavLinksContentQueryResult = Apollo.QueryResult<NavLinksContentQuery, NavLinksContentQueryVariables>;
+export const OfferLinksContentDocument = gql`
+    query OfferLinksContent {
+  allOferta {
+    nodes {
+      title(format: RENDERED)
+      slug
+    }
+  }
+}
+    `;
+
+/**
+ * __useOfferLinksContentQuery__
+ *
+ * To run a query within a React component, call `useOfferLinksContentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOfferLinksContentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOfferLinksContentQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOfferLinksContentQuery(baseOptions?: Apollo.QueryHookOptions<OfferLinksContentQuery, OfferLinksContentQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<OfferLinksContentQuery, OfferLinksContentQueryVariables>(OfferLinksContentDocument, options);
+      }
+export function useOfferLinksContentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OfferLinksContentQuery, OfferLinksContentQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<OfferLinksContentQuery, OfferLinksContentQueryVariables>(OfferLinksContentDocument, options);
+        }
+export function useOfferLinksContentSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<OfferLinksContentQuery, OfferLinksContentQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<OfferLinksContentQuery, OfferLinksContentQueryVariables>(OfferLinksContentDocument, options);
+        }
+export type OfferLinksContentQueryHookResult = ReturnType<typeof useOfferLinksContentQuery>;
+export type OfferLinksContentLazyQueryHookResult = ReturnType<typeof useOfferLinksContentLazyQuery>;
+export type OfferLinksContentSuspenseQueryHookResult = ReturnType<typeof useOfferLinksContentSuspenseQuery>;
+export type OfferLinksContentQueryResult = Apollo.QueryResult<OfferLinksContentQuery, OfferLinksContentQueryVariables>;
+export const OfferPageDynamicContentDocument = gql`
+    query OfferPageDynamicContent($slug: String!) {
+  ofertaBy(slug: $slug) {
+    offerCardItem {
+      homeOfferHeader
+      offerDescription
+      offerHeaderPicture {
+        node {
+          altText
+          mediaItemUrl
+          slug
+          title(format: RENDERED)
+        }
+      }
+      offerHeaderTitle
+      offerPicture {
+        node {
+          altText
+          mediaItemUrl
+          title(format: RENDERED)
+          slug
+        }
+      }
+      offerVideo
+    }
+  }
+}
+    `;
+
+/**
+ * __useOfferPageDynamicContentQuery__
+ *
+ * To run a query within a React component, call `useOfferPageDynamicContentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOfferPageDynamicContentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOfferPageDynamicContentQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useOfferPageDynamicContentQuery(baseOptions: Apollo.QueryHookOptions<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables> & ({ variables: OfferPageDynamicContentQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables>(OfferPageDynamicContentDocument, options);
+      }
+export function useOfferPageDynamicContentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables>(OfferPageDynamicContentDocument, options);
+        }
+export function useOfferPageDynamicContentSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables>(OfferPageDynamicContentDocument, options);
+        }
+export type OfferPageDynamicContentQueryHookResult = ReturnType<typeof useOfferPageDynamicContentQuery>;
+export type OfferPageDynamicContentLazyQueryHookResult = ReturnType<typeof useOfferPageDynamicContentLazyQuery>;
+export type OfferPageDynamicContentSuspenseQueryHookResult = ReturnType<typeof useOfferPageDynamicContentSuspenseQuery>;
+export type OfferPageDynamicContentQueryResult = Apollo.QueryResult<OfferPageDynamicContentQuery, OfferPageDynamicContentQueryVariables>;
 export const OfferSectionQueryDocument = gql`
     query OfferSectionQuery {
   allOferta {
@@ -12670,6 +12862,8 @@ export const OfferSectionQueryDocument = gql`
         }
         offerVideo
       }
+      slug
+      title(format: RENDERED)
     }
   }
 }

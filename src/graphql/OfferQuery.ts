@@ -26,6 +26,8 @@ export const OFFER_CONTENT_DB = gql`
 					}
 					offerVideo
 				}
+				slug
+				title(format: RENDERED)
 			}
 		}
 	}

@@ -21,22 +21,25 @@ const Contact = async () => {
 
 	return (
 		<section
-			className='relative w-full min-h-[100svh] bg-cover bg-right flex justify-center items-center '
+			id='contact'
+			className='relative w-full min-h-[100svh] bg-cover bg-fixed bg-right flex justify-center items-center py-10'
 			style={{
 				backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
 			}}
 		>
-			<div className='relative w-[90%] min-h-[80svh] text-white z-10 flex flex-col justify-evenly items-center text-center'>
-				<h3 className='text-4xl uppercase text-orange-400'>Kontakt</h3>
-				<div className=''>
+			<div className='relative w-[90%] min-h-[80svh] text-white z-10 flex flex-col justify-evenly items-center text-center bg-black bg-opacity-40 p-8 '>
+				<h3 className='text-5xl uppercase text-orange-400'>Kontakt</h3>
+				<div className='2xl:flex flex-row gap-10 '>
 					<div className='flex flex-col gap-8'>
-						<p className="mt-5">
+						<p className='mt-5'>
 							Zadzwoń lub skorzystaj z formularza kontaktowego i wyślij
 							wiadomość
 						</p>
 
-						<Link href={`mailto:${email}`}>
-							<div className='flex flex-col justify-center items-center min-h-[15svh] gap-3 transition-all hover:scale-105'>
+						<Link 
+						href={`mailto:${email}`}
+						>
+							<div className='flex flex-col justify-center items-center cursor-pointer min-h-[15svh] gap-3 transition-all hover:scale-105'>
 								<Image
 									src={mailIcon}
 									alt={"mail-icon"}
@@ -44,12 +47,12 @@ const Contact = async () => {
 									height={70}
 								/>
 								<h5 className='uppercase'>Adres e-mail</h5>
-								<p className='text-orange-400 text-bold'>{email}</p>
+								<h6 className='text-orange-400 text-bold '>{email}</h6>
 							</div>
 						</Link>
 
 						<Link href={`tel:${tel}`}>
-							<div className='flex flex-col justify-center items-center min-h-[15svh] gap-3 transition-all hover:scale-105'>
+							<div className='flex flex-col justify-center items-center cursor-pointer min-h-[15svh] gap-3 transition-all hover:scale-105'>
 								<Image
 									src={telIcon}
 									alt={"phone-icon"}
@@ -57,7 +60,7 @@ const Contact = async () => {
 									height={70}
 								/>
 								<h5 className='uppercase'>Numer telefonu</h5>
-								<p className='text-orange-400 text-bold'>{tel}</p>
+								<h6 className='text-orange-400 text-bold'>{tel}</h6>
 							</div>
 						</Link>
 					</div>

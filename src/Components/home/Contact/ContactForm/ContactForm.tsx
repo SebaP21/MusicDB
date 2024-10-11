@@ -59,7 +59,7 @@ const ContactForm: React.FC = () => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className='min-w-[100%] min-h-[30svh] flex flex-col gap-5 mt-10 text-black '
+			className='min-w-[100%] min-h-[30svh] flex flex-col gap-5 mt-10 text-black 2xl:min-w-[50%] max-w-[50%] justify-between '
 		>
 			<div className=''>
 				<input
@@ -108,12 +108,12 @@ const ContactForm: React.FC = () => {
 				/>
 			</div>
 			<button
-				className='w-full bg-orange-400 p-3 uppercase'
+				className='w-full transition-colors bg-orange-400 p-3 uppercase hover:bg-white hover:text-black'
 				type='submit'
 			>
 				Wyślij
 			</button>
-			{status && <p className='text-white'>{status}</p>}
+			{status && <p className='text-white '>{status}</p>}
 		</form>
 	);
 };

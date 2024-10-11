@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 // import { Audiowide } from "next/font/google";
 import { Roboto_Slab } from "next/font/google";
+import NavMobile from "@/Components/Nav/NavMobile/NavMobile";
+import NavDesktop from "@/Components/Nav/NavDesktop/NavDesktop";
+import Footer from "@/Components/Footer/Footer";
+// import { Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
 	title: "Music DB",
@@ -20,7 +24,18 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='pl'>
-			<body className={roboto.className}>{children}</body>
+			<head>
+				<link
+					href='https://fonts.googleapis.com/css2?family=Audiowide&display=swap'
+					rel='stylesheet'
+				/>
+			</head>
+			<body className={roboto.className}>
+				<NavMobile/>
+				<NavDesktop/>
+				{children}
+				<Footer/>
+			</body>
 		</html>
 	);
 }

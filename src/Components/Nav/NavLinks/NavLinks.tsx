@@ -1,6 +1,6 @@
 import { NAV_LINKS_CONTENT_DB } from "@/graphql/NavLinksQuery";
-import client from "../../../lib/apolloClient";
-import { NavLinksContentQuery } from "../../../lib/generated/graphql";
+import client from "../../../../lib/apolloClient";
+import { NavLinksContentQuery } from "../../../../lib/generated/graphql";
 import Link from "next/link";
 
 const NavLinks = async () => {

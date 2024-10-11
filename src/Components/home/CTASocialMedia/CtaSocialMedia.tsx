@@ -18,11 +18,13 @@ const CtaSocialMedia = async () => {
 		data.linkiSpoEcznoCiowe?.nodes[0].socialMedia?.socialMediaLink;
 
 	return (
-		<section className='h-[25svh] w-full bg-black text-white flex flex-col justify-center items-center px-5 gap-5'>
+		<section className='h-[30svh] w-full bg-black text-white flex flex-col justify-center items-center px-5 gap-5'>
 			<div>
-				<h4 className='text-2xl uppercase text-center'>Serdecznie zapraszam na</h4>
+				<h4 className='text-2xl uppercase text-center'>
+					Serdecznie zapraszam na
+				</h4>
 			</div>
-			<div className='flex w-full justify-evenly items-center'>
+			<div className='flex w-full justify-evenly items-center md:justify-center gap-10'>
 				<Link href={faceBookLink as string}>
 					<Image
 						src={faceBookIcon}
@@ -32,7 +34,7 @@ const CtaSocialMedia = async () => {
 						className=' transition-all hover:scale-105'
 					/>
 				</Link>
-				<p className='text-2xl uppercase'>oraz</p>
+				<h6 className='text-2xl uppercase'>oraz</h6>
 				<Link href={youTubeLink as string}>
 					<Image
 						src={youTubeIcon}
