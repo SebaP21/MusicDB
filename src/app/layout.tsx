@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
-import "@/styles/globals.css";
-import "@/styles/custom.css"
+// import "@/styles/globals.css";
+// import "@/styles/custom.css"
+import "./globals.css"
 
 import { Roboto_Slab } from "next/font/google";
 import NavMobile from "@/Components/Nav/NavMobile/NavMobile";

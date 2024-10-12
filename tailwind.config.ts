@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,12 +21,11 @@ const config: Config = {
 				zoom: "zoom 7s ease-in-out forwards",
 			},
 			backgroundPosition: {
-				'y-20': 'center 20%',
-				'y-50': 'center 50%',
-				'y-80': 'center 80%',
-			  }
+				"y-20": "center 20%",
+				"y-50": "center 50%",
+				"y-80": "center 80%",
+			},
 		},
 	},
 	plugins: [],
 };
-export default config;
