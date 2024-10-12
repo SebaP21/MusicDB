@@ -3252,9 +3252,9 @@ export type LogoBox = AcfFieldGroup & AcfFieldGroupFields & LogoBox_Fields & {
    * @deprecated Use __typename instead
    */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** logoNav */
+  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;LogoBox&quot; Field Group */
   logoNav?: Maybe<AcfMediaItemConnectionEdge>;
-  /** logo_footer */
+  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;LogoBox&quot; Field Group */
   logo_footer?: Maybe<AcfMediaItemConnectionEdge>;
 };
 
@@ -3265,9 +3265,9 @@ export type LogoBox_Fields = {
    * @deprecated Use __typename instead
    */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** logoNav */
+  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;LogoBox&quot; Field Group */
   logoNav?: Maybe<AcfMediaItemConnectionEdge>;
-  /** logo_footer */
+  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;LogoBox&quot; Field Group */
   logo_footer?: Maybe<AcfMediaItemConnectionEdge>;
 };
 
